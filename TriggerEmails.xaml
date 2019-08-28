@@ -1,0 +1,194 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="TriggerEmails" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:scg1="clr-namespace:System.Collections.Generic;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sd1="clr-namespace:System.Data;assembly=System.Data.DataSetExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sd2="clr-namespace:System.Diagnostics;assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sd3="clr-namespace:System.Drawing;assembly=System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xmlns:sd4="clr-namespace:System.Data;assembly=System.Data" xmlns:si="clr-namespace:System.IO;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sl="clr-namespace:System.Linq;assembly=System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sx="clr-namespace:System.Xml;assembly=System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sxl="clr-namespace:System.Xml.Linq;assembly=System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="DataArg" Type="InArgument(ui:QueueItem)" />
+    <x:Property Name="Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>446,744</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <mva:VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</mva:VisualBasic.Settings>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="6">
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="13">
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="406,664" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:GenericValue" Name="BodyTemplate" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="EmailTemplate" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="368,22" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="ui:GenericValue">[BodyTemplate]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="368,237" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[String.Format(BodyTemplate, DataArg.SpecificContent(&quot;Name&quot;).ToString)]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="330,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_2" IsBodyHtml="False" IsDraft="False" Subject="On-Boarding Form" To="[DataArg.SpecificContent(&quot;Email&quot;).ToString]">
+        <ui:SendOutlookMail.Files>
+          <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+            <InArgument x:TypeArguments="x:String">[Config.Item("ExcelForm").ToString]</InArgument>
+          </scg:List>
+        </ui:SendOutlookMail.Files>
+      </ui:SendOutlookMail>
+    </Sequence>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="368,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="592,151" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ReadTextFile Content="[BodyTemplate]" DisplayName="Read Text File" FileName="C:\Users\pujitha.t\OneDrive - Technovert\Desktop\EmployeeOnBoarding\Email Format.txt" sap:VirtualizedContainerService.HintSize="554,59" sap2010:WorkflowViewState.IdRef="ReadTextFile_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ReadTextFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="368,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="589,312" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap:VirtualizedContainerService.HintSize="551,260" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd4:DataTable" Name="Data" />
+              <Variable x:TypeArguments="x:String" Name="BodyTemplate" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="513,168" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="C:\Users\pujitha.t\OneDrive - Technovert\Desktop\EmployeeOnBoarding\Data.xlsx">
+              <ui:ExcelApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                  </ActivityAction.Argument>
+                  <ui:ExcelReadRange AddHeaders="True" DataTable="[Data]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="330,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Sheet1">
+                    <ui:ExcelReadRange.Range>
+                      <InArgument x:TypeArguments="x:String">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                    </ui:ExcelReadRange.Range>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ExcelReadRange>
+                </ActivityAction>
+              </ui:ExcelApplicationScope.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ExcelApplicationScope>
+          </Sequence>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="368,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="452,143" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[Data]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="216,51" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd4:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd4:DataRow" Name="row" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="368,237" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[String.Format(BodyTemplate, row(&quot;Name&quot;).ToString)]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="330,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="On-Boarding Form" To="[row(&quot;Email&quot;).ToString]">
+                    <ui:SendOutlookMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                        <InArgument x:TypeArguments="x:String">C:\Users\pujitha.t\OneDrive - Technovert\Desktop\EmployeeOnBoarding\Template.xlsx</InArgument>
+                      </scg:List>
+                    </ui:SendOutlookMail.Files>
+                  </ui:SendOutlookMail>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachRow.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEachRow>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+  </Sequence>
+</Activity>
