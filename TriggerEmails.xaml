@@ -3,21 +3,22 @@
     <x:Property Name="DataArg" Type="InArgument(ui:QueueItem)" />
     <x:Property Name="Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>446,744</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>625,984</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <mva:VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</mva:VisualBasic.Settings>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="6">
+    <scg:List x:TypeArguments="x:String" Capacity="7">
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Data</x:String>
       <x:String>System.Xml.Serialization</x:String>
       <x:String>System.Activities</x:String>
       <x:String>System</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="13">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="14">
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
@@ -31,9 +32,10 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="406,664" sap2010:WorkflowViewState.IdRef="Sequence_5">
+  <Sequence sap:VirtualizedContainerService.HintSize="585,904" sap2010:WorkflowViewState.IdRef="Sequence_5">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:GenericValue" Name="BodyTemplate" />
     </Sequence.Variables>
@@ -42,27 +44,38 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="EmailTemplate" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="368,22" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
-      <ui:GetRobotAsset.Value>
-        <OutArgument x:TypeArguments="ui:GenericValue">[BodyTemplate]</OutArgument>
-      </ui:GetRobotAsset.Value>
-    </ui:GetRobotAsset>
-    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="368,237" sap2010:WorkflowViewState.IdRef="Sequence_3">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[String.Format(BodyTemplate, DataArg.SpecificContent(&quot;Name&quot;).ToString)]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="330,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_2" IsBodyHtml="False" IsDraft="False" Subject="On-Boarding Form" To="[DataArg.SpecificContent(&quot;Email&quot;).ToString]">
-        <ui:SendOutlookMail.Files>
-          <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-            <InArgument x:TypeArguments="x:String">[Config.Item("ExcelForm").ToString]</InArgument>
-          </scg:List>
-        </ui:SendOutlookMail.Files>
-      </ui:SendOutlookMail>
-    </Sequence>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="368,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+    <If Condition="[DataArg.SpecificContent(&quot;Frequency&quot;).ToString = &quot;0&quot;]" sap:VirtualizedContainerService.HintSize="547,539" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="406,391" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="EmailTemplate" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="368,22" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+            <ui:GetRobotAsset.Value>
+              <OutArgument x:TypeArguments="ui:GenericValue">[BodyTemplate]</OutArgument>
+            </ui:GetRobotAsset.Value>
+          </ui:GetRobotAsset>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="368,237" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[String.Format(BodyTemplate, DataArg.SpecificContent(&quot;Name&quot;).ToString)]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="330,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_2" IsBodyHtml="True" IsDraft="False" Subject="On-Boarding Form" To="[DataArg.SpecificContent(&quot;Email&quot;).ToString]">
+              <ui:SendOutlookMail.Files>
+                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                  <InArgument x:TypeArguments="x:String">[Config.Item("ExcelForm").ToString]</InArgument>
+                </scg:List>
+              </ui:SendOutlookMail.Files>
+            </ui:SendOutlookMail>
+          </Sequence>
+        </Sequence>
+      </If.Then>
+    </If>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="547,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="592,151" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <sap:WorkflowViewStateService.ViewState>
@@ -87,9 +100,9 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="368,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="547,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="589,312" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="589,352" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -144,7 +157,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="368,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="547,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="452,143" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
