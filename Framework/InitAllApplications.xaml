@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>558,964</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>546,944</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="22">
@@ -58,7 +58,7 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Description: Open and initialize application as needed.&#xA;&#xA;Pre Condition: N/A&#xA;Post Condtion: Applications opened" DisplayName="Initialization Sequence" sap:VirtualizedContainerService.HintSize="518,884" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Description: Open and initialize application as needed.&#xA;&#xA;Pre Condition: N/A&#xA;Post Condtion: Applications opened" DisplayName="Initialization Sequence" sap:VirtualizedContainerService.HintSize="526,884" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="Data" />
       <Variable x:TypeArguments="x:Boolean" Name="isElementExist" />
@@ -69,28 +69,28 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:UiElementExists DisplayName="Element Exists 'Button  Close'" Exists="[isElementExist]" sap:VirtualizedContainerService.HintSize="480,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+    <ui:UiElementExists DisplayName="Element Exists 'Button  Close'" Exists="[isElementExist]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
       <ui:UiElementExists.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="7ec433a5b9442ee0dd8c905a4644f6a7" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='Template.xlsx - Excel' /&gt;&lt;uia cls='MsoCommandBar' idx='3' /&gt;&lt;uia cls='NetUIAppFrameHelper' name='Close' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
       </ui:UiElementExists.Target>
     </ui:UiElementExists>
-    <If Condition="[isElementExist]" sap:VirtualizedContainerService.HintSize="480,254" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[isElementExist]" sap:VirtualizedContainerService.HintSize="484,254" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <ui:CloseApplication DisplayName="Close Application 'EXCEL.EXE AdvancedCerti...'" sap:VirtualizedContainerService.HintSize="330,106" sap2010:WorkflowViewState.IdRef="CloseApplication_1">
+        <ui:CloseApplication DisplayName="Close Application 'EXCEL.EXE AdvancedCerti...'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="CloseApplication_1">
           <ui:CloseApplication.Target>
             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="704cd4ccb1170d688502ae119583d4a8" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='Book1 - Excel' /&gt;&lt;uia cls='MsoCommandBar' idx='3' /&gt;&lt;uia cls='NetUIAppFrameHelper' name='Close' /&gt;" WaitForReady="INTERACTIVE" />
           </ui:CloseApplication.Target>
         </ui:CloseApplication>
       </If.Then>
     </If>
-    <ui:ReadRange AddHeaders="True" DataTable="[Data]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="480,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[in_Config.Item(&quot;EmployeeData&quot;).ToString]">
+    <ui:ReadRange AddHeaders="True" DataTable="[Data]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="484,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Data" WorkbookPath="[in_Config.Item(&quot;EmployeeData&quot;).ToString]">
       <ui:ReadRange.Range>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <ui:BulkAddQueueItems TimeoutMS="{x:Null}" DisplayName="Bulk Add Queue Items" sap:VirtualizedContainerService.HintSize="480,22" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_1" QueueItemsDataTable="[Data]" QueueName="EmployeesData" />
-    <ui:LogMessage DisplayName="Log App Initialization message" sap:VirtualizedContainerService.HintSize="480,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Opening applications...&quot;]" />
+    <ui:BulkAddQueueItems TimeoutMS="{x:Null}" DisplayName="Bulk Add Queue Items" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_1" QueueItemsDataTable="[Data]" QueueName="EmployeesData" />
+    <ui:LogMessage DisplayName="Log App Initialization message" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Opening applications...&quot;]" />
   </Sequence>
 </Activity>
